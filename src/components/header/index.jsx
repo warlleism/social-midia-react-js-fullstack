@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from 'react-router-dom';
 import "./style.scss"
 import { Context } from "../../context/provider"
 
@@ -8,10 +9,11 @@ const Header = () => {
     const { mode, setMode } = useContext(Context);
 
     return (
-        <div className="header-container" style={{background: mode == 'ligth' ? '#59C1BD' : '#2A2B2C'}}>
-            <div className="header-logo" style={{color: mode == 'ligth' ? '#343232' : '#F3EFE0'}}>
-                <strong style={{color: mode == 'ligth' ? '#343232' : '#fff'}}>S</strong>carlet
-            </div>
+        <div className="header-container" style={{ background: mode == 'ligth' ? '#59C1BD' : '#2A2B2C' }}>
+
+            <Link to={"/"} className="header-logo" style={{ color: mode == 'ligth' ? '#343232' : '#F3EFE0' }}>
+                <strong style={{ color: mode == 'ligth' ? '#343232' : '#fff' }}>S</strong>carlet
+            </Link>
 
             <div className="input-container">
                 <input type="text" />
@@ -29,9 +31,9 @@ const Header = () => {
                     </span>
                 </li>
                 <li>
-                    <span class="material-symbols-outlined">
-                        home
-                    </span>
+                    <Link to={"/galery"} class="material-symbols-outlined">
+                    image
+                    </Link>
                 </li>
                 <li>
                     <span class="material-symbols-outlined" onClick={() => setShare(true)}>
@@ -39,9 +41,9 @@ const Header = () => {
                     </span>
                 </li>
                 <li>
-                    <span class="material-symbols-outlined">
+                    <Link to={"/favorite"} class="material-symbols-outlined">
                         favorite
-                    </span>
+                    </Link>
                 </li>
 
                 <li>

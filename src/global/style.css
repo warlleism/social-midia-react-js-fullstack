@@ -3,6 +3,7 @@
 * {
     margin: 0;
     padding: 0;
+    text-decoration: none;
     transition: 1s ease-in-out;
     font-family: 'Inter', sans-serif;
 }

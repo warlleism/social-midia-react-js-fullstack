@@ -8,8 +8,9 @@
     font-family: 'Inter', sans-serif;
 
     .header-logo {
+        color: #fcfcfc !important;
+
         cursor: pointer;
-        color: #343232;
         font-size: 2.4rem;
         filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.623));
 
@@ -45,12 +46,13 @@
         list-style: none;
         align-items: center;
 
-        li {
+        li  {
             color: white;
             margin: 0px 10px;
             cursor: pointer;
 
-            span {
+            span, a {
+                color: white;
                 font-size: 2rem;
                 filter: drop-shadow(1px 4px 1px rgba(0, 0, 0, 0.623));
             }

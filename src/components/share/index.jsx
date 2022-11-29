@@ -72,7 +72,7 @@ const Share = () => {
                                     }
 
                                 </div>
-                                <div onClick={() => CloseContainers()}>compartilhar</div>
+                                <div style={{background: "#626262"}} onClick={() => CloseContainers()}>compartilhar</div>
                             </div>
                         </div >
                     </>

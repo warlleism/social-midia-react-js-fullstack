@@ -1,16 +1,12 @@
-import Body from './components/body';
-import Header from './components/header';
-import Share from './components/share';
 import './global/style.css'
+import Routes from "./components/routes/index"
 import Provider from './context/provider';
 
 function App() {
   return (
     <div className="App">
       <Provider>
-        <Header />
-        <Body />
-        <Share />
+        <Routes />
       </Provider>
     </div>
   );
