@@ -40,11 +40,53 @@ const Body = () => {
             .then(data => setComents(data))
     }
 
+
     return (
-        <>
-            {console.log(coments)}
+        <div>
             <Share />
             <Header />
+            {
+                coments.length != 0
+                    ?
+                    <div className="container-body-chat" style={{ background: mode == 'ligth' ? '#f2f2f2' : '#343638' }}  >
+                        <span style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }} class="material-symbols-outlined close-button-chat" onClick={() => setComents([])}>
+                            close
+                        </span>
+                        {
+                            coments[0]?.map((e) => {
+                                return (
+                                    <>
+                                        <div className="chat">
+                                            <div>
+                                                <img src={`data:image/png;base64,${e?.imagem_user_coments}`} />
+                                                <div style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }} >{e.nome}</div>
+                                            </div>
+
+                                            <div className="container-name-msg">
+                                                <div>{e.comentario}</div>
+                                                <div>
+                                                    <span class="material-symbols-outlined">
+                                                        favorite
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="send-message-container">
+                                            <span style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }} class="material-symbols-outlined">
+                                                send
+                                            </span>
+                                            <input placeholder="comentar..." type="text" />
+                                        </div>
+                                    </>
+                                )
+                            })
+                        }
+                    </div>
+                    :
+                    false
+            }
+
+
             <div className="main-body" style={{ background: mode == 'ligth' ? '#f2f2f2' : '#151515' }}>
 
                 <div className="container-body-profile" style={{ background: mode == 'ligth' ? '#f2f2f2' : '#343638' }}>
@@ -78,7 +120,7 @@ const Body = () => {
 
                             <div className="container-chat-post">
 
-                                <div className="container-body-post" >
+                                <div className="container-body-post" id="chatT">
 
                                     <div>
                                         <img style={{ borderRadius: 100 }} src={`data:image/png;base64,${e?.imagem_user}`} />
@@ -93,7 +135,7 @@ const Body = () => {
                                                 </span>
                                             </li>
                                             <li>
-                                                <span class="material-symbols-outlined" onClick={() => ShowComents(e.id)}>
+                                                <span class="material-symbols-outlined" onClick={() => ShowComents(e.id, e.usuario_post)}>
                                                     chat_bubble
                                                 </span>
                                             </li>
@@ -105,51 +147,13 @@ const Body = () => {
                                         </ul>
                                     </div>
                                 </div>
-
-                                {
-                                    coments.length != 0
-                                        ?
-                                        <div className="container-body-chat" style={{ background: mode == 'ligth' ? '#f2f2f2' : '#343638' }}>
-                                            {
-                                                coments[0]?.map((e) => {
-                                                    return (
-                                                        <>
-                                                            <div className="chat">
-                                                                <div>
-                                                                    <img src={`data:image/png;base64,${e?.imagem_user_coments}`} />
-                                                                    <div style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }} >{e.nome}</div>
-                                                                </div>
-
-                                                                <div className="container-name-msg">
-                                                                    <div>{e.comentario}</div>
-                                                                    <div>
-                                                                        <span class="material-symbols-outlined">
-                                                                            favorite
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div className="send-message-container">
-                                                                <span style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }} class="material-symbols-outlined">
-                                                                    send
-                                                                </span>
-                                                                <input placeholder="comentar..." type="text" />
-                                                            </div>
-                                                        </>
-                                                    )
-                                                })
-                                            }
-                                        </div>
-                                        :
-                                        false
-                                }
                             </div>
                         )
                     })}
 
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
