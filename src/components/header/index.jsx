@@ -5,7 +5,7 @@ import { Context } from "../../context/provider"
 
 const Header = () => {
 
-    const { share, setShare } = useContext(Context);
+    const { setShare } = useContext(Context);
     const { mode, setMode } = useContext(Context);
 
     return (
@@ -47,7 +47,7 @@ const Header = () => {
                 </li>
 
                 <li>
-                    <img src={require('../../image/user3.png')} />
+                <img style={{ borderRadius: 100 }} src={`data:image/png;base64,${localStorage?.getItem("userImg")}`} />
                 </li>
             </ul>
 

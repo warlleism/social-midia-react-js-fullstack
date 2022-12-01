@@ -8,12 +8,10 @@
     font-family: 'Inter', sans-serif;
 
     .header-logo {
-        color: #fcfcfc !important;
-
         cursor: pointer;
         font-size: 2.4rem;
+        color: #fcfcfc !important;
         filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.623));
-
         strong {
             color: #f2f2f2;
         }

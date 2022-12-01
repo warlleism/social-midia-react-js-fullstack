@@ -1,29 +1,30 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../context/provider";
+import GetUser from "../hook/getUserHook";
 import Share from "../share";
 import Header from "../header"
-
 import "./style.scss"
 
 const Body = () => {
 
-    const { setShare } = useContext(Context);
+    const { share, setShare } = useContext(Context);
     const { mode } = useContext(Context);
     const [userPost, setUserPost] = useState([])
     const [coments, setComents] = useState([])
+    const [userData] = GetUser()
 
     useEffect(() => {
         getPosts()
-    }, [])
+    }, [share])
 
     const getPosts = () => {
         fetch('http://localhost:3001/postes')
             .then((res) => res.json())
             .then((data) => {
+                localStorage.setItem("user", data[0])
                 setUserPost(data)
             })
     }
-
 
     const ShowComents = async (event) => {
 
@@ -39,7 +40,6 @@ const Body = () => {
             .then(res => res.json())
             .then(data => setComents(data))
     }
-
 
     return (
         <div>
@@ -92,8 +92,9 @@ const Body = () => {
                 <div className="container-body-profile" style={{ background: mode == 'ligth' ? '#f2f2f2' : '#343638' }}>
                     <div className="container-profile">
                         <div>
-                            <img src={require('../../image/user1.png')} />
-                            <div style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }}>@jessica_silva</div>
+                            <img style={{ borderRadius: 100 }} src={`data:image/png;base64,${localStorage?.getItem("userImg")}`} />
+
+                            <div style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }}>{localStorage?.getItem("nome")}</div>
                         </div>
                         <div>
                             <span class="material-symbols-outlined">
@@ -127,7 +128,7 @@ const Body = () => {
                                     </div>
 
                                     <div>
-                                        <img className="img" src={`data:image/png;base64,${e?.imagem_post}`} />
+                                        <img className="img" src={e?.imagem_post} />
                                         <ul>
                                             <li>
                                                 <span class="material-symbols-outlined">

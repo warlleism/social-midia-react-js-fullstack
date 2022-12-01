@@ -12,8 +12,23 @@ const Share = () => {
     const uploadImage = async (e) => {
         const file = e.target.files[0];
         const base64 = await convertBase64(file);
+        console.log(base64)
         setBaseImage(base64);
     };
+
+    const CreateNewPost = async () => {
+
+        const options = {
+            body: JSON.stringify({ usuario_post: localStorage.getItem("id"), imagem_post: baseImage, imagem_user: localStorage.getItem("userImg") }),
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+
+        await fetch('http://localhost:3001/novopost', options)
+    }
+
 
     const convertBase64 = (file) => {
         return new Promise((resolve, reject) => {
@@ -30,7 +45,8 @@ const Share = () => {
         });
     };
 
-    const CloseContainers = () => {
+    const CloseContainers = async () => {
+        await CreateNewPost()
         setBaseImage("")
         setShare(false)
     }
@@ -72,7 +88,7 @@ const Share = () => {
                                     }
 
                                 </div>
-                                <div style={{background: "#626262"}} onClick={() => CloseContainers()}>compartilhar</div>
+                                <div style={{ background: "#626262" }} onClick={() => CloseContainers()}>compartilhar</div>
                             </div>
                         </div >
                     </>

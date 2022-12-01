@@ -21,6 +21,16 @@ const listarComentarios = async (param) => {
     return await conn.query(`select u.nome, c.comentario, c.imagem_user_coments, c.usuario_coment, c.post_coment from usuarios u join comentarios c on u.id = c.usuario_coment where c.post_coment = ${param};`);
 }
 
+const criarNovoPost = async (usuario, postimg, usuarioimg) => {
+    const conn = await connect();
+    return await conn.query(`insert into posts (usuario_post, imagem_post, imagem_user) values (${usuario}, "${postimg}", "${usuarioimg}");`);
+}
+
+const listarUsuario = async () => {
+    const conn = await connect();
+    return await conn.query(`select * from usuarios where id = 1;`);
+}
+
 connect();
 
-module.exports = { listarPostes , listarComentarios }
+module.exports = { listarPostes, listarComentarios, listarUsuario, criarNovoPost }
