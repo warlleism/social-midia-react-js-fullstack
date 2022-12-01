@@ -14,21 +14,21 @@ export default function Rotas() {
 
                 <Route path="/"
                     element={
-                        <React.Suspense fallback='Carregando...'>
+                        <React.Suspense>
                             <Home />
                         </React.Suspense>
                     } />
 
                 <Route path="/galery"
                     element={
-                        <React.Suspense fallback='Carregando...'>
+                        <React.Suspense>
                             <Galery />
                         </React.Suspense>
                     } />
 
                 <Route path="/favorite"
                     element={
-                        <React.Suspense fallback='Carregando...'>
+                        <React.Suspense>
                             <Favorite />
                         </React.Suspense>
                     } />

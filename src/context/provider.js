@@ -9,6 +9,13 @@ export default function Provider({ children }) {
 
     const [mode, setMode] = DarkMode('mode', 'ligth')
 
+    if (mode == "ligth") {
+        var objRef = document.body;
+        objRef.style.background = "#f2f2f2"
+    } else {
+        var objRef = document.body;
+        objRef.style.background = "#151515"
+    }
 
     return (
         <Context.Provider value={{ share, setShare, mode, setMode }}>

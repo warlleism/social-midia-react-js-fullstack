@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../context/provider";
 import GetUser from "../hook/getUserHook";
-import Share from "../share";
-import Header from "../header"
-import "./style.scss"
 import Spinner from "../spinner";
+import Share from "../share";
+import Header from "../header";
+import "./style.scss";
+import { Link } from "react-router-dom";
 
 const Body = () => {
 
@@ -40,6 +41,19 @@ const Body = () => {
         await fetch('http://localhost:3001/comentarios', options)
             .then(res => res.json())
             .then(data => setComents(data))
+    }
+
+    const FavoritarPost = async (imagem, id_post, imagem_user) => {
+        const options = {
+            body: JSON.stringify({ usuario_favoritou: localStorage.getItem("id"), imagem_post: imagem, id_post: id_post, imagem_user: imagem_user }),
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+
+        await fetch('http://localhost:3001/favoritar', options)
+            .then(data => console.log(data))
     }
 
     useEffect(() => {
@@ -101,7 +115,6 @@ const Body = () => {
                     false
             }
 
-
             <div className="main-body" style={{ background: mode == 'ligth' ? '#f2f2f2' : '#151515' }}>
 
                 <div className="container-body-profile" style={{ background: mode == 'ligth' ? '#f2f2f2' : '#343638' }}>
@@ -118,11 +131,11 @@ const Body = () => {
                     </div>
                     <ul>
                         <li style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }}>Seu perfil</li>
-                        <li style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }}>Favoritos</li>
+                        <li ><Link style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }} to={"./favorite"}>Favoritos</Link></li>
                         <li style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }}>Seus amigos</li>
                     </ul>
                     <ul>
-                        <li style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }}>Criar nova galeria</li>
+                        <li><Link style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }} to={"./galery"}>Galeria</Link></li>
                         <li style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }} onClick={() => setShare(true)}>Adicionar nova foto</li>
                         <li style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }}>Sugestão de perfil</li>
                     </ul>
@@ -132,25 +145,21 @@ const Body = () => {
 
                     {userPost[0]?.map((e) => {
                         return (
-
                             <div className="container-chat-post">
-
                                 <div className="container-body-post" id="chatT">
-
                                     <div>
                                         <img style={{ borderRadius: 100 }} src={`data:image/png;base64,${e?.imagem_user}`} />
                                     </div>
-
                                     <div>
                                         <img className="img" src={e?.imagem_post} />
                                         <ul>
                                             <li>
-                                                <span class="material-symbols-outlined">
-                                                    favorite
+                                                <span class="material-symbols-outlined" onClick={() => FavoritarPost(e?.imagem_post, e?.id_post, e?.imagem_user)}>
+                                                    heart_plus
                                                 </span>
                                             </li>
                                             <li>
-                                                <span class="material-symbols-outlined" onClick={() => ShowComents(e.id, e.usuario_post)}>
+                                                <span class="material-symbols-outlined" onClick={() => ShowComents(e?.id, e?.usuario_post)}>
                                                     chat_bubble
                                                 </span>
                                             </li>

@@ -13,12 +13,13 @@
 
 .modal-content {
     top: 15%;
+    z-index: 999;
     right: 100px;
     width: 200px;
-    display: flex;
     height: 70px;
-    color: #f3f3f3;
+    display: flex;
     position: fixed;
+    color: #f3f3f3;
     align-items: center;
     border-radius: 10px;
     justify-content: center;

@@ -9,5 +9,6 @@
 
 body {
     height: 100vh;
+    transition: 1s ease-in-out;
     background-color: #f2f2f2;
 }
