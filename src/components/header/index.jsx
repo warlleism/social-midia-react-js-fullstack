@@ -1,7 +1,7 @@
+import { Context } from "../../context/provider"
 import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
 import "./style.scss"
-import { Context } from "../../context/provider"
 
 const Header = () => {
 
@@ -31,14 +31,14 @@ const Header = () => {
                     </span>
                 </li>
                 <li>
-                    <Link to={"/galery"} class="material-symbols-outlined">
-                    image
-                    </Link>
-                </li>
-                <li>
                     <span class="material-symbols-outlined" onClick={() => setShare(true)}>
                         add_box
                     </span>
+                </li>
+                <li>
+                    <Link to={"/galery"} class="material-symbols-outlined">
+                        image
+                    </Link>
                 </li>
                 <li>
                     <Link to={"/favorite"} class="material-symbols-outlined">
@@ -47,7 +47,7 @@ const Header = () => {
                 </li>
 
                 <li>
-                <img style={{ borderRadius: 100 }} src={`data:image/png;base64,${localStorage?.getItem("userImg")}`} />
+                    <img style={{ borderRadius: 100 }} src={`data:image/png;base64,${localStorage?.getItem("userImg")}`} />
                 </li>
             </ul>
 

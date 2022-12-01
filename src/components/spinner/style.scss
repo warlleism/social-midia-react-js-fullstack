@@ -1,0 +1,11 @@
+.sweet-loading {
+    top: 0;
+    width: 100vw;
+    z-index: 10;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(48, 48, 48);
+}

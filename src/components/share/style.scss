@@ -11,6 +11,35 @@
     }
 }
 
+.modal-content {
+    top: 15%;
+    right: 100px;
+    width: 200px;
+    display: flex;
+    height: 70px;
+    color: #f3f3f3;
+    position: fixed;
+    align-items: center;
+    border-radius: 10px;
+    justify-content: center;
+    background-color: #59C1BD;
+    box-shadow: #496161 3px 4px 1px;
+
+    span {
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+        position: absolute;
+        filter: drop-shadow(1px 1px 1px rgb(57, 57, 57));
+
+    }
+
+    div {
+        font-weight: 700;
+        filter: drop-shadow(2px 2px 1px rgb(57, 57, 57));
+    }
+}
+
 
 
 .container-main-share {

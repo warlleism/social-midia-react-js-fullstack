@@ -4,10 +4,10 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
-    transition: 1s ease-in-out;
     font-family: 'Inter', sans-serif;
 }
 
 body {
+    height: 100vh;
     background-color: #f2f2f2;
 }

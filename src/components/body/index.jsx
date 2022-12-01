@@ -4,6 +4,7 @@ import GetUser from "../hook/getUserHook";
 import Share from "../share";
 import Header from "../header"
 import "./style.scss"
+import Spinner from "../spinner";
 
 const Body = () => {
 
@@ -11,6 +12,7 @@ const Body = () => {
     const { mode } = useContext(Context);
     const [userPost, setUserPost] = useState([])
     const [coments, setComents] = useState([])
+    const [load, setLoad] = useState(true)
     const [userData] = GetUser()
 
     useEffect(() => {
@@ -27,7 +29,6 @@ const Body = () => {
     }
 
     const ShowComents = async (event) => {
-
         const options = {
             body: JSON.stringify({ id: event }),
             method: 'POST',
@@ -41,10 +42,24 @@ const Body = () => {
             .then(data => setComents(data))
     }
 
+    useEffect(() => {
+        setTimeout(() => {
+            setLoad(false)
+        }, 1000)
+    })
+
     return (
         <div>
             <Share />
             <Header />
+            {
+                load
+
+                    ?
+                    <Spinner />
+                    :
+                    false
+            }
             {
                 coments.length != 0
                     ?
@@ -93,7 +108,6 @@ const Body = () => {
                     <div className="container-profile">
                         <div>
                             <img style={{ borderRadius: 100 }} src={`data:image/png;base64,${localStorage?.getItem("userImg")}`} />
-
                             <div style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }}>{localStorage?.getItem("nome")}</div>
                         </div>
                         <div>
