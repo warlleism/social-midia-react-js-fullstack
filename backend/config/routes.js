@@ -26,6 +26,12 @@ routes.post('/comentarios', async (req, res) => {
     res.send(clientes)
 })
 
+routes.post('/novocomentario', async (req, res) => {
+    const { userId, comentario, userNome, imgUser, id_post } = req.body
+    const clientes = await db.adicionarComentario(userId, comentario, userNome, imgUser, id_post)
+    res.send(clientes)
+})
+
 routes.post('/novopost', async (req, res) => {
     const { usuario_post, imagem_post, imagem_user } = req.body
     const clientes = await db.criarNovoPost(usuario_post, imagem_post, imagem_user)

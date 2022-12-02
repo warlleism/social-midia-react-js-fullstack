@@ -36,7 +36,7 @@ const Share = () => {
                     if (data.status == 200) {
                         setTimeout(() => {
                             setModal(false)
-                        }, 5000)
+                        }, 1000)
                     }
                 })
         }

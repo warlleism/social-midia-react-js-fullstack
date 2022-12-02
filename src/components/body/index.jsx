@@ -10,10 +10,11 @@ import { Link } from "react-router-dom";
 const Body = () => {
 
     const { share, setShare } = useContext(Context);
-    const { mode } = useContext(Context);
+    const [comentario, setComentario] = useState("")
     const [userPost, setUserPost] = useState([])
     const [coments, setComents] = useState([])
     const [load, setLoad] = useState(true)
+    const { mode } = useContext(Context);
     const [userData] = GetUser()
 
     useEffect(() => {
@@ -29,6 +30,21 @@ const Body = () => {
             })
     }
 
+
+    const sendComent = async () => {
+        const options = {
+            body: JSON.stringify({ userId: localStorage.getItem("id"), comentario: comentario, userNome: localStorage.getItem("nome"), imgUser: localStorage.getItem("userImg"), id_post: localStorage.getItem("post") }),
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+
+        await fetch('http://localhost:3001/novocomentario', options)
+            .then(res => res.json())
+            .then(data => setComents(data))
+    }
+
     const ShowComents = async (event) => {
         const options = {
             body: JSON.stringify({ id: event }),
@@ -40,7 +56,10 @@ const Body = () => {
 
         await fetch('http://localhost:3001/comentarios', options)
             .then(res => res.json())
-            .then(data => setComents(data))
+            .then(data => {
+                data[0].map((e) => localStorage.setItem("post", e?.post_coment))
+                setComents(data)
+            })
     }
 
     const FavoritarPost = async (imagem, id_post, imagem_user) => {
@@ -62,7 +81,7 @@ const Body = () => {
     })
 
     return (
-        <div>
+        <div id="main">
             <Share />
             <Header />
             {
@@ -73,42 +92,39 @@ const Body = () => {
                     :
                     false
             }
+
             {
-                coments.length != 0
+                coments?.length != 0
                     ?
-                    <div className="container-body-chat" style={{ background: mode == 'ligth' ? '#f2f2f2' : '#343638' }}  >
-                        <span style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }} class="material-symbols-outlined close-button-chat" onClick={() => setComents([])}>
+                    <div className="master">
+                        <span style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff', textAlign: "end", marginTop: 30, cursor: "pointer", width: "96%", fontSize: 50 }} className="material-symbols-outlined close-button-chat" onClick={() => setComents([])}>
                             close
                         </span>
-                        {
-                            coments[0]?.map((e) => {
-                                return (
-                                    <>
-                                        <div className="chat">
-                                            <div>
-                                                <img src={`data:image/png;base64,${e?.imagem_user_coments}`} />
-                                                <div style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }} >{e.nome}</div>
-                                            </div>
-
-                                            <div className="container-name-msg">
-                                                <div>{e.comentario}</div>
-                                                <div>
-                                                    <span class="material-symbols-outlined">
-                                                        favorite
-                                                    </span>
+                        <div className="main-chat">
+                            <div className="container-chat-content" style={{ background: mode == 'ligth' ? '#f2f2f2' : '#343638' }}>
+                                <div className="chat">
+                                    {
+                                        coments[0]?.map((e) => {
+                                            return (
+                                                <div className="comentario">
+                                                    <div className="user">
+                                                        <img style={{ borderRadius: 100 }} src={`data:image/png;base64,${e?.imagem_user_coments}`} />
+                                                        <div className="nome" style={{ color: mode == 'ligth' ? '#343638' : '#f2f2f2' }}>{e?.nome}</div>
+                                                    </div>
+                                                    <div className="coment" style={{ color: mode == 'ligth' ? '#343638' : '#f2f2f2' }}>{e?.comentario}</div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div className="send-message-container">
-                                            <span style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }} class="material-symbols-outlined">
-                                                send
-                                            </span>
-                                            <input placeholder="comentar..." type="text" />
-                                        </div>
-                                    </>
-                                )
-                            })
-                        }
+                                            )
+                                        })
+                                    }
+                                </div>
+                            </div>
+                            <div className="send-message-container">
+                                <span style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }} className="material-symbols-outlined" onClick={() => sendComent()}>
+                                    send
+                                </span>
+                                <input placeholder="comentar..." type="text" onChange={(event) => setComentario(event.target.value)} />
+                            </div>
+                        </div>
                     </div>
                     :
                     false
@@ -116,14 +132,14 @@ const Body = () => {
 
             <div className="main-body" style={{ background: mode == 'ligth' ? '#f2f2f2' : '#151515' }}>
 
-                <div className="container-body-profile" style={{ background: mode == 'ligth' ? '#f2f2f2' : '#343638' }}>
+                <div className="container-body-profile" style={{ background: mode == 'ligth' ? '#f9f9f9' : '#343638' }}>
                     <div className="container-profile">
                         <div>
                             <img style={{ borderRadius: 100 }} src={`data:image/png;base64,${localStorage?.getItem("userImg")}`} />
                             <div style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }}>{localStorage?.getItem("nome")}</div>
                         </div>
                         <div>
-                            <span class="material-symbols-outlined">
+                            <span className="material-symbols-outlined">
                                 star
                             </span>
                         </div>
@@ -141,7 +157,6 @@ const Body = () => {
                 </div>
 
                 <div className="content-post">
-
                     {userPost[0]?.map((e) => {
                         return (
                             <div className="container-chat-post">
@@ -153,17 +168,17 @@ const Body = () => {
                                         <img className="img" src={e?.imagem_post} />
                                         <ul>
                                             <li>
-                                                <span class="material-symbols-outlined" onClick={() => FavoritarPost(e?.imagem_post, e?.id_post, e?.imagem_user)}>
+                                                <span className="material-symbols-outlined" onClick={() => FavoritarPost(e?.imagem_post, e?.id_post, e?.imagem_user)}>
                                                     heart_plus
                                                 </span>
                                             </li>
                                             <li>
-                                                <span class="material-symbols-outlined" onClick={() => ShowComents(e?.id, e?.usuario_post)}>
+                                                <span className="material-symbols-outlined" onClick={() => ShowComents(e?.id, e?.usuario_post)}>
                                                     chat_bubble
                                                 </span>
                                             </li>
                                             <li>
-                                                <span class="material-symbols-outlined">
+                                                <span className="material-symbols-outlined">
                                                     download
                                                 </span>
                                             </li>
@@ -173,7 +188,6 @@ const Body = () => {
                             </div>
                         )
                     })}
-
                 </div>
             </div>
         </div>
