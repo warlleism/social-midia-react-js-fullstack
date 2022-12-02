@@ -30,7 +30,6 @@ const Body = () => {
             })
     }
 
-
     const sendComent = async () => {
         const options = {
             body: JSON.stringify({ userId: localStorage.getItem("id"), comentario: comentario, userNome: localStorage.getItem("nome"), imgUser: localStorage.getItem("userImg"), id_post: localStorage.getItem("post") }),
@@ -41,11 +40,14 @@ const Body = () => {
         };
 
         await fetch('http://localhost:3001/novocomentario', options)
-            .then(res => res.json())
-            .then(data => setComents(data))
+
+        ShowComents(localStorage.getItem("post"))
     }
 
     const ShowComents = async (event) => {
+
+        localStorage.setItem("post", event)
+
         const options = {
             body: JSON.stringify({ id: event }),
             method: 'POST',
@@ -57,7 +59,6 @@ const Body = () => {
         await fetch('http://localhost:3001/comentarios', options)
             .then(res => res.json())
             .then(data => {
-                data[0].map((e) => localStorage.setItem("post", e?.post_coment))
                 setComents(data)
             })
     }
@@ -92,7 +93,6 @@ const Body = () => {
                     :
                     false
             }
-
             {
                 coments?.length != 0
                     ?
@@ -101,6 +101,7 @@ const Body = () => {
                             close
                         </span>
                         <div className="main-chat">
+                            <div className="titulo-comentario" style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }}>Comentarios</div>
                             <div className="container-chat-content" style={{ background: mode == 'ligth' ? '#f2f2f2' : '#343638' }}>
                                 <div className="chat">
                                     {
@@ -119,7 +120,7 @@ const Body = () => {
                                 </div>
                             </div>
                             <div className="send-message-container">
-                                <span style={{ color: mode == 'ligth' ? '#1c1c1ce0' : '#fff' }} className="material-symbols-outlined" onClick={() => sendComent()}>
+                                <span style={{ color: '#fff' }} className="material-symbols-outlined" onClick={() => sendComent()}>
                                     send
                                 </span>
                                 <input placeholder="comentar..." type="text" onChange={(event) => setComentario(event.target.value)} />
@@ -173,7 +174,7 @@ const Body = () => {
                                                 </span>
                                             </li>
                                             <li>
-                                                <span className="material-symbols-outlined" onClick={() => ShowComents(e?.id, e?.usuario_post)}>
+                                                <span className="material-symbols-outlined" onClick={() => ShowComents(e?.id_post)}>
                                                     chat_bubble
                                                 </span>
                                             </li>

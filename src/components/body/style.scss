@@ -34,6 +34,18 @@ a {
     flex-direction: column;
     transform: translate(-50%, -50%);
 
+    .titulo-comentario {
+        width: 100%;
+        color: #fff;
+        font-weight: 600;
+        padding: 10px 10px;
+        box-sizing: border-box;
+        background-color: #59C1BD;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+
+    }
+
     .send-message-container {
         width: 100%;
         height: 90px;
@@ -76,6 +88,7 @@ a {
 
 
 .container-chat-content {
+    height: 100%;
     overflow-y: auto;
 
     .chat {
@@ -92,6 +105,7 @@ a {
                 display: flex;
                 align-items: center;
                 margin-left: 10px;
+
                 .nome {
                     margin-left: 10px;
                 }
