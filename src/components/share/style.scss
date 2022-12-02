@@ -1,8 +1,8 @@
 .close-button {
     top: 50px;
     right: 40px;
-    color: #fff;
     z-index: 10;
+    color: #fff;
     cursor: pointer;
     position: fixed;
 
@@ -11,36 +11,49 @@
     }
 }
 
-.modal-content {
-    top: 15%;
-    z-index: 999;
-    right: 100px;
-    width: 200px;
-    height: 70px;
+.modal {
+    left: 50%;
+    top: 50%;
+    width: 30%;
+    height: 70%;
+    z-index: 11;
     display: flex;
     position: fixed;
-    color: #f3f3f3;
-    align-items: center;
+    text-align: center;
     border-radius: 10px;
+    align-items: center;
     justify-content: center;
-    background-color: #59C1BD;
-    box-shadow: #496161 3px 4px 1px;
+    background: linear-gradient(to top, #171717 , rgb(60, 60, 60));
+    transform: translate(-50%, -50%);
 
-    span {
-        top: 5px;
-        right: 10px;
-        cursor: pointer;
-        position: absolute;
-        filter: drop-shadow(1px 1px 1px rgb(57, 57, 57));
-
+    .lds-dual-ring {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
     }
 
-    div {
-        font-weight: 700;
-        filter: drop-shadow(2px 2px 1px rgb(57, 57, 57));
+    .lds-dual-ring:after {
+        content: " ";
+        display: block;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        border: 6px solid #f2f2f2;
+        border-color: #f2f2f2 transparent #f2f2f2 transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
     }
+
+    @keyframes lds-dual-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
 }
-
 
 
 .container-main-share {

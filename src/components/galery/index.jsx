@@ -21,7 +21,7 @@ const Galeria = () => {
             },
         };
 
-        await fetch('http://localhost:3001/favoritos', options)
+        await fetch('http://localhost:3001/galeria', options)
             .then(data => data.json())
             .then((res) => setFavoritos(res))
     }

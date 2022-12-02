@@ -4,15 +4,13 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-around;
     font-family: 'Inter', sans-serif;
 
     .container-galery-post {
         width: 400px;
         display: flex;
         height: 430px;
-        margin-top: 100px;
-        margin-bottom: 100px;
+        margin: 100px 20px 100px 40px;
 
         div:nth-child(1) {
             margin: 0 10px 0 0;

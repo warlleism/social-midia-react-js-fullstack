@@ -53,7 +53,6 @@ const Body = () => {
         };
 
         await fetch('http://localhost:3001/favoritar', options)
-            .then(data => console.log(data))
     }
 
     useEffect(() => {

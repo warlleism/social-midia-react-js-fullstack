@@ -6,14 +6,11 @@ const Share = () => {
 
     const { share, setShare } = useContext(Context);
     const [baseImage, setBaseImage] = useState("");
-    const { mode, setMode } = useContext(Context);
     const [modal, setModal] = useState(false);
-
 
     const uploadImage = async (e) => {
         const file = e.target.files[0];
         const base64 = await convertBase64(file);
-        console.log(base64)
         setBaseImage(base64);
     };
 
@@ -22,6 +19,10 @@ const Share = () => {
         if (baseImage == "") {
             return
         } else {
+            setTimeout(() => {
+                setModal(true)
+            }, 500)
+
             const options = {
                 body: JSON.stringify({ usuario_post: localStorage.getItem("id"), imagem_post: baseImage, imagem_user: localStorage.getItem("userImg") }),
                 method: 'POST',
@@ -34,8 +35,8 @@ const Share = () => {
                 .then((data) => {
                     if (data.status == 200) {
                         setTimeout(() => {
-                            setModal(true)
-                        }, 1000)
+                            setModal(false)
+                        }, 5000)
                     }
                 })
         }
@@ -60,8 +61,6 @@ const Share = () => {
         await CreateNewPost()
         setBaseImage("")
         setShare(false)
-
-
     }
 
     return (
@@ -69,11 +68,11 @@ const Share = () => {
             {
                 modal
                     ?
-                    <div className="modal-content" style={{ background: mode == 'ligth' ? '#59C1BD' : '#2A2B2C' }}>
-                        <span className="material-symbols-outlined" onClick={() => setModal(false)}>
-                            close
-                        </span>
-                        <div>foto adicionada!</div>
+                    <div className="modal">
+                        <div>
+                            <div class="lds-dual-ring"></div>
+                            <div style={{ fontSize: 20, marginTop: 30, color: "#f2f2f2" }} id="msg">carregando</div>
+                        </div>
                     </div>
                     :
                     false

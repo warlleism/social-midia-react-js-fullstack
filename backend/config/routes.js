@@ -14,6 +14,12 @@ routes.post('/favoritos', async (req, res) => {
     res.send(favoritos[0])
 })
 
+routes.post('/galeria', async (req, res) => {
+    const { id } = req.body
+    const galeria = await db.listarGaleria(id)
+    res.send(galeria[0])
+})
+
 routes.post('/comentarios', async (req, res) => {
     const { id } = req.body
     const clientes = await db.listarComentarios(id)
@@ -27,7 +33,7 @@ routes.post('/novopost', async (req, res) => {
 })
 
 routes.post('/favoritar', async (req, res) => {
-    const { usuario_favoritou, imagem_post, id_post, imagem_user} = req.body
+    const { usuario_favoritou, imagem_post, id_post, imagem_user } = req.body
     const clientes = await db.favoritarPost(usuario_favoritou, imagem_post, id_post, imagem_user)
     res.send(clientes)
 })
