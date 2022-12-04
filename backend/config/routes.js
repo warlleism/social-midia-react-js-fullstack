@@ -49,4 +49,16 @@ routes.get('/usuario', async (req, res) => {
     res.send(usuario[0])
 })
 
+routes.post('/desfavoritar', async (req, res) => {
+    const { post } = req.body
+    const favorito = await db.desfavoritar(post)
+    res.send(favorito)
+})
+
+routes.post('/excluirPost', async (req, res) => {
+    const { post } = req.body
+    const favorito = await db.excluirPost(post)
+    res.send(favorito)
+})
+
 module.exports = routes;

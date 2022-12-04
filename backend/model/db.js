@@ -58,6 +58,18 @@ const listarUsuario = async () => {
     return await conn.query(`select * from usuarios where id = 1;`);
 }
 
+const desfavoritar = async (post) => {
+    const conn = await connect();
+    return await conn.query(`DELETE FROM favoritos WHERE id_post = ${post};`);
+}
+
+const excluirPost = async (post) => {
+    const conn = await connect();
+    return await conn.query(`DELETE FROM posts WHERE id_post = ${post};`);
+}
+
+
+
 connect();
 
-module.exports = { listarPostes, listarComentarios, listarUsuario, criarNovoPost, favoritarPost, listarFavoritos, listarGaleria, adicionarComentario }
+module.exports = { listarPostes, listarComentarios, listarUsuario, criarNovoPost, favoritarPost, listarFavoritos, listarGaleria, adicionarComentario, desfavoritar, excluirPost }

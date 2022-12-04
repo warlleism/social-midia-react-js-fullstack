@@ -29,6 +29,23 @@ const Favorite = () => {
             })
     }
 
+    const Desfavoritar = async (post) => {
+        setLoad(true)
+
+        const options = {
+            body: JSON.stringify({ post: post }),
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+
+        await fetch('http://localhost:3001/desfavoritar', options)
+            .then(data => data.json())
+            .then((res) => setLoad(false))
+        ListarFavoritos()
+    }
+
     useEffect(() => {
         ListarFavoritos()
     }, [])
@@ -61,7 +78,7 @@ const Favorite = () => {
                 {
                     favoritos.map((e) => {
                         return (
-                            <div className="container-galery-post" >
+                            <div className="container-galery-post">
                                 <div>
                                     <img style={{ borderRadius: 100 }} className="img" src={`data:image/png;base64,${e?.imagem_user}`} />
                                 </div>
@@ -75,8 +92,10 @@ const Favorite = () => {
                                         </li>
                                     </ul>
                                 </div>
-                                <span class="material-symbols-outlined delete" style={{ color: mode == 'ligth' ? '#59C1BD' : '#f2f2f2' }}>
-                                    delete
+                                <span class="material-symbols-outlined deslike" style={{ color: mode == 'ligth' ? '#59C1BD' : '#f2f2f2' }} onClick={() => Desfavoritar(e.id_post)}>
+                                    <span class="material-symbols-outlined">
+                                        thumb_down
+                                    </span>
                                 </span>
                             </div>
                         )
