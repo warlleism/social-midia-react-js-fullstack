@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../context/provider";
+import { Link } from "react-router-dom";
 import Share from "../share/index";
 import Spinner from "../spinner";
 import Header from "../header";
@@ -23,18 +24,18 @@ const Galeria = () => {
 
         await fetch('http://localhost:3001/galeria', options)
             .then(data => data.json())
-            .then((res) => setFavoritos(res))
+            .then((res) => {
+                setFavoritos(res)
+                setLoad(false)
+            })
     }
 
     useEffect(() => {
         ListarFavoritos()
-        setTimeout(() => {
-            setLoad(false)
-        }, 1000)
     }, [])
 
     return (
-        <div style={{height: "100%"}}>
+        <div style={{ height: "100%" }}>
             {
                 load
                     ?
@@ -45,6 +46,18 @@ const Galeria = () => {
             <Share />
             <Header />
             <div className="main-galery">
+
+                <div className="quadrado-1 qtr" style={{ background: mode == 'ligth' ? '#1f1f1f0f' : '#ffffff07' }}></div>
+                <div className="quadrado-2 qtr" style={{ background: mode == 'ligth' ? '#1f1f1f0f' : '#ffffff07' }}></div>
+                <div className="quadrado-3 qtr" style={{ background: mode == 'ligth' ? '#1f1f1f0f' : '#ffffff07' }}></div>
+                <div className="quadrado-4 qtr" style={{ background: mode == 'ligth' ? '#1f1f1f0f' : '#ffffff07' }}></div>
+
+                <Link to={'/'} className="back-content" style={{ color: mode == 'ligth' ? '#343232cc' : '#ffffff9f' }}>
+                    <span class="material-symbols-outlined">
+                        arrow_back
+                    </span>
+                    <div>Galeria</div>
+                </Link>
                 {
                     favoritos.map((e) => {
                         return (
@@ -54,20 +67,23 @@ const Galeria = () => {
                                 </div>
                                 <div>
                                     <img className="img" src={e?.imagem_post} />
-                                    <ul>
+                                    <ul style={{ background: mode == 'ligth' ? '#f2f2f2' : '#262626' }}>
                                         <li>
-                                            <span class="material-symbols-outlined">
-                                                download
+                                            <span class="material-symbols-outlined" style={{ background: mode == 'ligth' ? '#f2f2f2' : '#262626' }}>
+                                                chat_bubble
                                             </span>
                                         </li>
                                     </ul>
                                 </div>
+                                <span class="material-symbols-outlined delete" style={{ color: mode == 'ligth' ? '#59C1BD' : '#f2f2f2' }}>
+                                    delete
+                                </span>
                             </div>
                         )
                     })
                 }
             </div>
-        </div>
+        </div >
     )
 }
 

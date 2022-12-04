@@ -12,37 +12,40 @@ a {
     transition: 1s ease-in-out;
 }
 
+
+
 .master {
     top: 0;
     width: 100%;
-    z-index: 99;
+    z-index: 2;
     height: 100vh;
     position: fixed;
     background-color: rgba(45, 45, 45, 0.424);
+}
 
-    .container-close {
-        top: 30px;
-        right: 30px;
-        display: flex;
-        position: fixed;
-        align-items: center;
-        border-radius: 50px;
-        justify-content: center;
-        border: solid 2px #59C1BD;
+
+.container-close {
+    top: 30px;
+    z-index: 9;
+    right: 30px;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    border-radius: 50px;
+    justify-content: center;
+    border: solid 2px #59C1BD;
+    transition: .5s ease-in-out;
+
+    span {
+        color: #59C1BD;
+        font-size: 40px;
         transition: .5s ease-in-out;
-
-        span {
-            color: #59C1BD;
-            font-size: 40px;
-            transition: .5s ease-in-out;
-        }
-
     }
 
-    .container-close:hover {
-        filter: drop-shadow(0px 0px 2px #59C1BD);
-    }
+}
 
+.container-close:hover {
+    filter: drop-shadow(0px 0px 2px #59C1BD);
 }
 
 .main-chat {
@@ -86,10 +89,10 @@ a {
             width: 80%;
             border: none;
             padding: 10px;
-            color: rgb(37, 37, 37);
             outline: none;
             background: #fff;
             border-radius: 100px;
+            color: rgb(37, 37, 37);
             filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.356));
         }
 
@@ -100,13 +103,8 @@ a {
 
 }
 
-.container-chat-content::-webkit-scrollbar-thumb {
-    background-color: rgb(33, 153, 141);
-    border-radius: 20px;
-}
-
 .container-chat-content::-webkit-scrollbar {
-    width: 5px;
+    display: none;
 }
 
 
@@ -245,7 +243,8 @@ a {
             margin: 0 10px 0 0;
 
             img {
-                max-width: 60px;
+                width: 70px;
+                height: 70px;
             }
         }
 
@@ -257,8 +256,6 @@ a {
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
             box-shadow: rgba(0, 0, 0, 0.308) 1px 1px 7px;
-
-
 
             .img {
                 padding: 0;
@@ -275,16 +272,17 @@ a {
                 align-items: center;
                 box-shadow: rgba(0, 0, 0, 0.308) 1px 1px 7px;
 
+                .chat-heart {
+                    transition: 1s ease-in-out;
+                    font-size: 30px;
+                }
+
                 li:nth-child(1) {
                     color: rgb(221, 10, 80);
                 }
 
                 li:nth-child(2) {
-                    color: rgb(227, 230, 63);
-                }
-
-                li:nth-child(3) {
-                    color: rgb(1, 130, 139);
+                    color: rgb(15, 219, 124);
                 }
 
                 li {

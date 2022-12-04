@@ -72,6 +72,7 @@ const Share = () => {
                         <div>
                             <div class="lds-dual-ring"></div>
                             <div style={{ fontSize: 20, marginTop: 30, color: "#f2f2f2" }} id="msg">carregando</div>
+                            <div class="Loading"></div>
                         </div>
                     </div>
                     :
@@ -82,7 +83,7 @@ const Share = () => {
                 share != false
                     ?
                     <>
-                        <div className="close-button" onClick={() => CloseContainers()}>
+                        <div className="close-button" onClick={() => setShare(false)}>
                             <span className="material-symbols-outlined">
                                 close
                             </span>

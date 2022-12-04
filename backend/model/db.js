@@ -52,6 +52,7 @@ const favoritarPost = async (usuario_favoritou, imagem_post, id_post, img_user) 
     }
 }
 
+
 const listarUsuario = async () => {
     const conn = await connect();
     return await conn.query(`select * from usuarios where id = 1;`);

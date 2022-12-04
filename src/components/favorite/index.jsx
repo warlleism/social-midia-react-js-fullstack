@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../context/provider";
+import { Link } from "react-router-dom";
 import Share from "../share/index";
 import Spinner from "../spinner";
 import Header from "../header";
-import "./style.scss";
+import "../galery/style.scss";
 
 const Favorite = () => {
 
@@ -22,17 +23,15 @@ const Favorite = () => {
 
         await fetch('http://localhost:3001/favoritos', options)
             .then(data => data.json())
-            .then((res) => setFavoritos(res))
+            .then((res) => {
+                setFavoritos(res)
+                setLoad(false)
+            })
     }
 
     useEffect(() => {
         ListarFavoritos()
-        setTimeout(() => {
-            setLoad(false)
-        }, 1000)
     }, [])
-
-
 
     return (
         <>
@@ -47,6 +46,18 @@ const Favorite = () => {
             <Header />
             <div className="main-galery">
 
+                <div className="quadrado-1 qtr" style={{ background: mode == 'ligth' ? '#1f1f1f0f' : '#ffffff07' }}></div>
+                <div className="quadrado-2 qtr" style={{ background: mode == 'ligth' ? '#1f1f1f0f' : '#ffffff07' }}></div>
+                <div className="quadrado-3 qtr" style={{ background: mode == 'ligth' ? '#1f1f1f0f' : '#ffffff07' }}></div>
+                <div className="quadrado-4 qtr" style={{ background: mode == 'ligth' ? '#1f1f1f0f' : '#ffffff07' }}></div>
+
+                <Link to={'/'} className="back-content" style={{ color: mode == 'ligth' ? '#343232cc' : '#ffffff9f' }}>
+                    <span class="material-symbols-outlined">
+                        arrow_back
+                    </span>
+                    <div>Favoritos</div>
+                </Link>
+
                 {
                     favoritos.map((e) => {
                         return (
@@ -59,11 +70,14 @@ const Favorite = () => {
                                     <ul>
                                         <li>
                                             <span class="material-symbols-outlined">
-                                                download
+                                                chat_bubble
                                             </span>
                                         </li>
                                     </ul>
                                 </div>
+                                <span class="material-symbols-outlined delete" style={{ color: mode == 'ligth' ? '#59C1BD' : '#f2f2f2' }}>
+                                    delete
+                                </span>
                             </div>
                         )
                     })
