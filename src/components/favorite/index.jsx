@@ -63,10 +63,10 @@ const Favorite = () => {
             <Header />
             <div className="main-galery">
 
-                <div className="quadrado-1 qtr" style={{ background: mode == 'ligth' ? '#1f1f1f0f' : '#ffffff07' }}></div>
-                <div className="quadrado-2 qtr" style={{ background: mode == 'ligth' ? '#1f1f1f0f' : '#ffffff07' }}></div>
-                <div className="quadrado-3 qtr" style={{ background: mode == 'ligth' ? '#1f1f1f0f' : '#ffffff07' }}></div>
-                <div className="quadrado-4 qtr" style={{ background: mode == 'ligth' ? '#1f1f1f0f' : '#ffffff07' }}></div>
+                <div className="quadrado-1 qtr" style={{ background: mode == 'ligth' ? '#59c1bd24' : '#ffffff07' }}></div>
+                <div className="quadrado-2 qtr" style={{ background: mode == 'ligth' ? '#59c1bd24' : '#ffffff07' }}></div>
+                <div className="quadrado-3 qtr" style={{ background: mode == 'ligth' ? '#59c1bd24' : '#ffffff07' }}></div>
+                <div className="quadrado-4 qtr" style={{ background: mode == 'ligth' ? '#59c1bd24' : '#ffffff07' }}></div>
 
                 <Link to={'/'} className="back-content" style={{ color: mode == 'ligth' ? '#343232cc' : '#ffffff9f' }}>
                     <span class="material-symbols-outlined">

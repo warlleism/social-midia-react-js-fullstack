@@ -184,7 +184,7 @@ const Body = () => {
                                         <img className="img" src={e?.imagem_post} />
                                         <ul style={{ background: mode == 'ligth' ? '#f2f2f2' : '#262626' }}>
                                             <li>
-                                                <span className="material-symbols-rounded chat-heart" onClick={(event) => FavoritarPost(e?.imagem_post, e?.id_post, e?.imagem_user, event)}>
+                                                <span className="material-symbols-outlined chat-heart" onClick={(event) => FavoritarPost(e?.imagem_post, e?.id_post, e?.imagem_user, event)}>
                                                     favorite
                                                 </span>
                                             </li>
