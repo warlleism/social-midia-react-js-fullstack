@@ -105,7 +105,7 @@ const Body = () => {
                     ?
                     <>
                         <div className="master" onClick={() => setComents([])}></div>
-                        <div style={{zIndex: 9999}}>
+                        <div style={{ zIndex: 9999 }}>
                             <div className="container-close">
                                 <span style={{ cursor: "pointer" }} className="material-symbols-outlined close-button-chat" onClick={() => setComents([])}>
                                     close
@@ -175,8 +175,8 @@ const Body = () => {
                 <div className="content-post">
                     {userPost[0]?.map((e) => {
                         return (
-                            <div id="chat" className="container-chat-post">
-                                <div className="container-body-post" id="chatT">
+                            <div className="container-chat-post">
+                                <div className="container-body-post">
                                     <div>
                                         <img style={{ borderRadius: 100 }} src={`data:image/png;base64,${e?.imagem_user}`} />
                                     </div>

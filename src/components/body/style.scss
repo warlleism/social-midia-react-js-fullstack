@@ -14,14 +14,6 @@ a {
 
 
 
-.master {
-    top: 0;
-    width: 100%;
-    z-index: 2;
-    height: 100vh;
-    position: fixed;
-    background-color: rgba(45, 45, 45, 0.424);
-}
 
 
 .container-close {
@@ -47,6 +39,16 @@ a {
 .container-close:hover {
     filter: drop-shadow(0px 0px 2px #59C1BD);
 }
+
+.master {
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(45, 45, 45, 0.424);
+}
+
 
 .main-chat {
     top: 50%;
@@ -294,6 +296,86 @@ a {
                     }
                 }
             }
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .container-body-profile {
+        display: none;
+
+    }
+
+    .main-chat {
+        background-color: red;
+    }
+
+    .main-body {
+        margin: 0;
+
+        .content-post {
+            margin: 0;
+            width: 100%;
+
+            .container-chat-post {
+
+                .container-body-post {
+                    margin-top: 30px;
+                    margin-bottom: 0px;
+                    display: flex;
+                    height: 580px;
+                    align-items: center;
+                    flex-direction: column;
+
+                    div:nth-child(1) {
+                        width: 90%;
+                    }
+
+                    div:nth-child(2) {
+                        width: 98%;
+                        height: 500px;
+
+                        img {
+                            height: 100%;
+                        }
+                    }
+
+                }
+            }
+
+        }
+    }
+
+}
+
+@media screen and (max-width: 384px) {
+
+    .main-body {
+
+        .content-post {
+
+            .container-chat-post {
+                margin-bottom: -30px;
+
+                .container-body-post {
+
+
+                    div:nth-child(1) {
+                        width: 90%;
+                    }
+
+                    div:nth-child(2) {
+                        width: 98%;
+                        height: 400px;
+
+                        img {
+                            height: 100%;
+                        }
+                    }
+
+                }
+            }
+
         }
     }
 }

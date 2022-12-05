@@ -22,8 +22,8 @@
   text-align: center;
   border-radius: 10px;
   align-items: center;
-  justify-content: center;
   background: #11b4a7;
+  justify-content: center;
   transform: translate(-50%, -50%);
 
 
@@ -44,7 +44,7 @@
     width: 0;
     height: 100%;
     border-radius: 4px;
-    animation: load 1s normal;
+    animation: load .9s normal;
   }
 
   @keyframes load {
@@ -57,12 +57,6 @@
       width: 100%;
       background: #21e2d2;
     }
-
- 
-
-
-
-
   }
 
 
@@ -109,7 +103,7 @@
 
 
   div:nth-child(1) {
-    width: 35%;
+    width: 800px;
     color: #fff;
     height: 800px;
     display: flex;
@@ -168,4 +162,13 @@
     }
   }
 
+}
+
+@media screen and (max-width: 838px) {
+
+  .container-main-share {
+    div:nth-child(1) {
+      width: 90%;
+    }
+  }
 }

@@ -10,7 +10,6 @@ const Header = () => {
 
     return (
         <div className="header-container" style={{ background: mode == 'ligth' ? '#59C1BD' : '#2A2B2C' }}>
-
             <Link to={"/"} className="header-logo" style={{ color: mode == 'ligth' ? '#343232' : '#F3EFE0' }}>
                 <strong style={{ color: mode == 'ligth' ? '#343232' : '#fff' }}>S</strong>carlet
             </Link>
@@ -50,7 +49,6 @@ const Header = () => {
                     <img style={{ borderRadius: 100 }} src={`data:image/png;base64,${localStorage?.getItem("userImg")}`} />
                 </li>
             </ul>
-
         </div>
     )
 }

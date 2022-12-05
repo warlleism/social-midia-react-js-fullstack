@@ -68,6 +68,24 @@
             }
         }
     }
+}
 
+@media screen and (max-width: 742px) {
+    .header-container {
+        .input-container {
+            display: none;
+        }
 
+        .container-list-nav {
+            display: flex;
+            list-style: none;
+            justify-content: space-between;
+            width: 60%;
+
+            li {
+                margin: 0;
+            }
+
+        }
+    }
 }
