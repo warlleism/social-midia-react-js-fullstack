@@ -69,7 +69,7 @@ const Favorite = () => {
                 <div className="quadrado-4 qtr" style={{ background: mode == 'ligth' ? '#59c1bd24' : '#ffffff07' }}></div>
 
                 <Link to={'/'} className="back-content" style={{ color: mode == 'ligth' ? '#343232cc' : '#ffffff9f' }}>
-                    <span class="material-symbols-outlined">
+                    <span className="material-symbols-outlined">
                         arrow_back
                     </span>
                     <div>Favoritos</div>
@@ -86,14 +86,14 @@ const Favorite = () => {
                                     <img className="img" src={e?.imagem_post} />
                                     <ul>
                                         <li>
-                                            <span class="material-symbols-outlined">
+                                            <span className="material-symbols-outlined">
                                                 chat_bubble
                                             </span>
                                         </li>
                                     </ul>
                                 </div>
-                                <span class="material-symbols-outlined deslike" style={{ color: mode == 'ligth' ? '#59C1BD' : '#f2f2f2' }} onClick={() => Desfavoritar(e.id_post)}>
-                                    <span class="material-symbols-outlined">
+                                <span className="material-symbols-outlined deslike" style={{ color: mode == 'ligth' ? '#59C1BD' : '#f2f2f2' }} onClick={() => Desfavoritar(e.id_post)}>
+                                    <span className="material-symbols-outlined">
                                         thumb_down
                                     </span>
                                 </span>

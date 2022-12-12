@@ -92,7 +92,6 @@ const Body = () => {
         await fetch('http://localhost:3001/favoritar', options)
     }
 
-
     return (
         <div id="main">
             <Share />
@@ -175,7 +174,7 @@ const Body = () => {
                 <div className="content-post">
                     {userPost[0]?.map((e) => {
                         return (
-                            <div className="container-chat-post">
+                            <div className="container-chat-post" key={e?.id_post}>
                                 <div className="container-body-post">
                                     <div>
                                         <img style={{ borderRadius: 100 }} src={`data:image/png;base64,${e?.imagem_user}`} />

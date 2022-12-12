@@ -71,7 +71,7 @@ const Galeria = () => {
                 <div className="quadrado-4 qtr" style={{ background: mode == 'ligth' ? '#59c1bd24' : '#ffffff07' }}></div>
 
                 <Link to={'/'} className="back-content" style={{ color: mode == 'ligth' ? '#343232cc' : '#ffffff9f' }}>
-                    <span class="material-symbols-outlined">
+                    <span className="material-symbols-outlined">
                         arrow_back
                     </span>
                     <div>Galeria</div>
@@ -87,13 +87,13 @@ const Galeria = () => {
                                     <img className="img" src={e?.imagem_post} />
                                     <ul style={{ background: mode == 'ligth' ? '#f2f2f2' : '#262626' }}>
                                         <li>
-                                            <span class="material-symbols-outlined" style={{ background: mode == 'ligth' ? '#f2f2f2' : '#262626' }}>
+                                            <span className="material-symbols-outlined" style={{ background: mode == 'ligth' ? '#f2f2f2' : '#262626' }}>
                                                 chat_bubble
                                             </span>
                                         </li>
                                     </ul>
                                 </div>
-                                <span class="material-symbols-outlined deslike" style={{ fontSize: 40, color: mode == 'ligth' ? '#59C1BD' : '#f2f2f2' }} onClick={() => Desfavoritar(e.id_post)}>
+                                <span className="material-symbols-outlined deslike" style={{ fontSize: 40, color: mode == 'ligth' ? '#59C1BD' : '#f2f2f2' }} onClick={() => Desfavoritar(e.id_post)}>
                                     delete
                                 </span>
                             </div>

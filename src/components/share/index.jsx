@@ -70,9 +70,9 @@ const Share = () => {
                     ?
                     <div className="modal">
                         <div>
-                            <div class="lds-dual-ring"></div>
+                            <div className="lds-dual-ring"></div>
                             <div style={{ fontSize: 20, marginTop: 30, color: "#f2f2f2" }} id="msg">carregando</div>
-                            <div class="Loading"></div>
+                            <div className="Loading"></div>
                         </div>
                     </div>
                     :

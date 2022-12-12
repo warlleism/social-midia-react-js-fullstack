@@ -17,7 +17,7 @@ const Header = () => {
             <div className="input-container">
                 <input type="text" />
                 <div className="container-glass-input">
-                    <span class="material-symbols-outlined">
+                    <span className="material-symbols-outlined">
                         search
                     </span>
                 </div>
@@ -25,22 +25,22 @@ const Header = () => {
 
             <ul className="container-list-nav">
                 <li>
-                    <span class="material-symbols-outlined" onClick={() => mode == 'ligth' ? setMode('dark') : setMode('ligth')}>
+                    <span className="material-symbols-outlined" onClick={() => mode == 'ligth' ? setMode('dark') : setMode('ligth')}>
                         dark_mode
                     </span>
                 </li>
                 <li>
-                    <span class="material-symbols-outlined" onClick={() => setShare(true)}>
+                    <span className="material-symbols-outlined" onClick={() => setShare(true)}>
                         add_box
                     </span>
                 </li>
                 <li>
-                    <Link to={"/galery"} class="material-symbols-outlined">
+                    <Link to={"/galery"} className="material-symbols-outlined">
                         image
                     </Link>
                 </li>
                 <li>
-                    <Link to={"/favorite"} class="material-symbols-outlined">
+                    <Link to={"/favorite"} className="material-symbols-outlined">
                         favorite
                     </Link>
                 </li>
