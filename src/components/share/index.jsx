@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../context/provider";
+import convertBase64 from "../hook/base64Post";
 import "./style.scss"
 
 const Share = () => {
@@ -41,21 +42,6 @@ const Share = () => {
                 })
         }
     }
-
-    const convertBase64 = (file) => {
-        return new Promise((resolve, reject) => {
-            const fileReader = new FileReader();
-            fileReader.readAsDataURL(file);
-
-            fileReader.onload = () => {
-                resolve(fileReader.result);
-            };
-
-            fileReader.onerror = (error) => {
-                reject(error);
-            };
-        });
-    };
 
     const CloseContainers = async () => {
         await CreateNewPost()
